@@ -35,6 +35,13 @@ describe('throwError', () => {
 });
 
 describe('throwCustomError', () => {
+  test('should throw custom error with message', () => {
+    try {
+      throwCustomError();
+    } catch (err: any) {
+      expect(err.message).toBe('This is my awesome custom error!');
+    }
+  });
   test('should throw custom error', () => {
     try {
       throwCustomError();

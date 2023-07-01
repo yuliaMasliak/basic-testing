@@ -1,5 +1,5 @@
 // Uncomment the code below and write your tests
-// import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from '.';
+import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from '.';
 
 describe('doStuffByTimeout', () => {
   beforeAll(() => {
@@ -9,13 +9,18 @@ describe('doStuffByTimeout', () => {
   afterAll(() => {
     jest.useRealTimers();
   });
-
+  const func = jest.fn();
+  const timer = 2000;
   test('should set timeout with provided callback and timeout', () => {
-    // Write your test here
+    doStuffByTimeout(func, timer);
+    expect(func).toHaveBeenCalled();
   });
 
   test('should call callback only after timeout', () => {
-    // Write your test here
+    doStuffByTimeout(func, timer);
+    expect(func).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(timer);
+    expect(func).toHaveBeenCalled();
   });
 });
 
@@ -27,13 +32,20 @@ describe('doStuffByInterval', () => {
   afterAll(() => {
     jest.useRealTimers();
   });
-
+  const func = jest.fn();
+  const int = 200;
   test('should set interval with provided callback and timeout', () => {
-    // Write your test here
+    doStuffByInterval(func, int);
+    expect(func).toHaveBeenCalled();
   });
 
   test('should call callback multiple times after multiple intervals', () => {
-    // Write your test here
+    doStuffByInterval(func, int);
+    expect(func).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(int);
+    expect(func).toHaveBeenCalledTimes(2);
+    jest.advanceTimersByTime(int);
+    expect(func).toHaveBeenCalledTimes(3);
   });
 });
 
