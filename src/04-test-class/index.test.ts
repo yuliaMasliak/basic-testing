@@ -5,7 +5,6 @@ import {
   TransferFailedError,
   SynchronizationFailedError,
 } from '.';
-import _lodash from 'lodash';
 
 const newAccount = getBankAccount(100);
 const anotherAccount = getBankAccount(10);
