@@ -1,6 +1,6 @@
 // Uncomment the code below and write your tests
 import { simpleCalculator, Action } from './index';
-let input = {
+const input = {
   a: 16,
   b: 8,
   action: Action.Add,
